@@ -61,20 +61,33 @@ def get_db():
 @app.route('/')
 @crossdomain(origin='*')
 def index():
-    db = get_db()
-    cur = db.execute('select * from diagnosis;')
-    diagnosis = cur.fetchall()
-    print diagnosis
-    return "Some JSON data"
+    return "API Landing Page"
 
-@app.route('/diagnosis', methods = ['GET'])
+#assume all patients are created beforehand
+@app.route('/symptoms', methods = ['POST'])
 @crossdomain(origin='*')
 def get_diagnosis():
-    print "Inside fct"
     db = get_db()
-    cur = get_db().execute("select * from diagnosis;")
+    name = request.form['name']
+#may have many symptoms need to iterate
+    symptom = request.form['symptom']
+    db.execute("insert into pat2sym values (name, symptom);")
+    cur = db.execute("select name from diagnosis;")
     result = cur.fetchall()
     return jsonify(result)
+
+@app.route('/diagnose', methods = ['POST'])
+@crossdomain(origin='*')
+def get_prescription():
+    db = get_db()
+    name = request.form['name']
+    diagnosis = request.form['diagnosis']
+    db.execute("insert into pat2dia values (name, diagnosis);")
+    cur = db.execute("select name from prescription;")
+    result = cur.fetchall()
+    cur = db.execute("select prescription_name from dia2pre where diagnosis_name=?;", (diagnosis,))
+    recommended = cur.fetchone()
+    return jsonify({'result':result, 'recommended':recommended})
 
 @app.route('/verify', methods = ['POST'])
 @crossdomain(origin='*')
@@ -87,7 +100,6 @@ def verify():
         (diagnosis, prescription))
     
     result = cur.fetchall()
-    print result
     if result is not None:
         return jsonify( {'result': 'ok'} )
     else:
