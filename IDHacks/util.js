@@ -4,6 +4,6 @@ $(document).on("pageinit", "#diagnosis",function(){
 	}
 });
 
-$(document).on("pageini", "#prescription", function(){
+$(document).on("pageinit", "#prescription", function(){
 
 });
