@@ -3,6 +3,7 @@ from flask import Flask, g, request, jsonify, make_response, current_app
 from functools import update_wrapper
 from datetime import timedelta
 
+import json
 import sqlite3
 
 app = Flask(__name__)
@@ -79,6 +80,10 @@ def get_diagnosis():
     print result
     #for some reason first diagnosis appearing twice, hackfix
     result = result[1:]
+    
+    #hack to save to file
+    with open('result.json', 'w') as f:
+        json.dump({'result':result, 'patient':name}, f)
     return jsonify({'result':result, 'patient':name})
 
 @app.route('/diagnose', methods = ['POST'])
@@ -87,11 +92,15 @@ def get_prescription():
     db = get_db()
     name = request.form['name']
     diagnosis = request.form['diagnosis']
-    db.execute("insert into pat2dia values (name, diagnosis);")
+    db.execute("insert into pat2dia values (?, ?);", (name, diagnosis))
     cur = db.execute("select name from prescription;")
     result = cur.fetchall()
     cur = db.execute("select prescription_name from dia2pre where diagnosis_name=?;", (diagnosis,))
     recommended = cur.fetchone()
+    
+    with open('result.json', 'w') as f:
+        json.dump({'result':result, 'recommended':recommended}, f)
+    
     return jsonify({'result':result, 'recommended':recommended})
 
 @app.route('/verify', methods = ['POST'])
@@ -106,10 +115,14 @@ def verify():
     
     result = cur.fetchall()
     if result is not None:
+        with open('result.json', 'w') as f:
+            json.dump({'result': 'ok'}, f) 
         return jsonify( {'result': 'ok'} )
     else:
         alert_msg = "Cannot treat " + diagnosis + " using " + prescription
-        return jsonify ( {'result': 'error', 'alert': alert_msg} )
+        with open('result.json', 'w') as f:
+            json.dump({'result':'error', 'alert':alert_msg}, f)
+        return jsonify ({'result':'error', 'alert':alert_msg})
 
 if __name__ == '__main__':
     app.run()

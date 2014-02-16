@@ -2,6 +2,7 @@
 obz
 *.swp
 *.db
+result.json
 
 # C extensions
 *.so
