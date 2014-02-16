@@ -1,5 +1,15 @@
 id-hack-obz
 ============
-Need a virtualenv named obz. Then run pip install -r requirements.txt.
 
-To run: execute app.py and sqlite3 test.db < schema.sql. Then call curl localhost:5000.
+Setup
+-----
+Run these commands:  
+virtualenv obz
+pip install -r requirements.txt
+execute app.py  
+sqlite3 test.db < schema.sql
+
+Test
+----
+curl localhost:5000; echo
+curl -d "diagnosis=Flu&prescription=Acetaminophen" localhost:5000; echo
