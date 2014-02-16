@@ -1,4 +1,4 @@
-id-hack-orbz
+id-hack-obz
 ============
 Need a virtualenv named obz. Then run pip install -r requirements.txt.
 
