@@ -1,12 +1,9 @@
-$(document).on("pageinit", "#home",function(){
+$(document).on("pageinit", "#diagnosis",function(){
+	$.getJSON("localhost:5000/diagnosis", function(data){
+		console.log(data);	
+	}
+});
 
-	$.get("/symptoms.txt", function(data){
-		console.log("here");
-	
-		symp = data.split("\n");
-		len = symp.length;
-		for (i=0; i<len; i++){
-			$("ul").append("<li><a href='#'>"+symp[0]+"</a></li>");
-		}
-	});
+$(document).on("pageini", "#prescription", function(){
+
 });
