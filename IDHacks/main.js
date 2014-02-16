@@ -10,12 +10,13 @@ $(document).on('pagebeforeshow', '#index', function(){
 });
 
 
-$(document).on("pageinit", "#second",function(){
-		$("#patient").val(storeObject.patient);
-		for (i=0;i<storeObject.diagnosis.length; i++){
-			$("fieldset").append("<input type='radio' name='radio-choice' value="+i
-			+"/><label for='radio-choice-2'>"+storeObject.diagnosis[i][1]+"</label>");
-		}
+$(document).on("pageshow", "#second", function(){
+    
+    $("#second #patient-name").text(storeObject.patient);
+    for (i=0;i<storeObject.diagnosis.length; i++){
+            $("fieldset").append("<input type='radio' name='radio-choice' value="+i
+            +"/><label for='radio-choice-2'>"+storeObject.diagnosis[i][1]+"</label>");
+    }
 });
 
 
