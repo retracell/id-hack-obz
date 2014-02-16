@@ -21,7 +21,8 @@ $(document).on("pageshow", "#second", function(){
     }
 });
 
-$(document).on("pageshow", "#third", function(){
+$(document).on("pageinit", "#third", function(){
+    location.reload();
     $("#third #patient-name").text(storeObject.patient);
     $("#third #diagnosis-name").text(storeObject.diagnose);
     for (i=0;i<storeObject.prescription.length; i++){
