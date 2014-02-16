@@ -76,7 +76,10 @@ def get_diagnosis():
     cur = db.execute("select * from diagnosis;")
     db.commit()
     result = cur.fetchall()
-    return jsonify(result)
+    print result
+    #for some reason first diagnosis appearing twice, hackfix
+    result = result[1:]
+    return jsonify({'result':result, 'patient':name})
 
 @app.route('/diagnose', methods = ['POST'])
 @crossdomain(origin='*')
