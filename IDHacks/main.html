@@ -59,15 +59,15 @@
         <div data-role="page" id="third" data-theme="b">
             <div data-role="header" data-theme="b">
                 <h3>
-                    <h1> Diagnosis </h1>
+                    <h1> Prescription </h1>
                 </h3>
                 <a href="#index" class="ui-btn-left">Back</a>
             </div>
 
             <div data-role="content">
-                <form id ="diagnosis" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/diagnosis">
+                <form id ="prescription" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/verify">
                     <fieldset data-role="controlgroup">
-                    <legend style="font-weight:bold;"> Select the diagnosis for <text id="name"></text>: </legend>
+                    <legend style="font-weight:bold;"> Select the prescription for <text id="patient-name"></text>'s diagnosis of <text id="diagnosis-name"></text></legend>
                     </fieldset>
                 </form>
             </div>
