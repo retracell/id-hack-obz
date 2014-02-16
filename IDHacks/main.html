@@ -56,16 +56,6 @@
                     <input type="submit" id="change-page-diagnose" value="Submit"/>
                 </form>
             </div>
-            <script>
-                $('#diagnosis')
-                    .ajaxForm({
-                        url : 'http://127.0.0.1:5000/diagnosis', // or whatever
-                        dataType : 'json',
-                        success : function (response) {
-                            storeObject.recommended = response.recommended;
-                     }
-                });
-            </script>
         </div>
 
         <script>

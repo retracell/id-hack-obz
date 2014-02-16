@@ -35,6 +35,7 @@ $(document).on("pageshow", "#third", function(){
 var storeObject = {
     patient : '',
     diagnosis : '',
+    diagnose : '',
     prescriptions : '',
     recommended : '' 
 }
