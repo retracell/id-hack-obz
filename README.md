@@ -1,7 +1,5 @@
 id-hack-orbz
 ============
-Need a virtualenv named orbz.
-Then run pip install -r requirements.txt
+Need a virtualenv named obz. Then run pip install -r requirements.txt.
 
-execute app.py
-curl localhost:5000
+To run: execute app.py. Then call curl localhost:5000.

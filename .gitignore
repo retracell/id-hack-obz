@@ -1,5 +1,5 @@
 *.py[cod]
-orbz
+obz
 *.swp
 
 # C extensions
