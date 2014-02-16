@@ -8,6 +8,7 @@ $(document).on('pagebeforeshow', '#index', function(){
 
 $(document).on('pagebeforeshow', '#index', function(){
     $(document).on('click', '#change-page-prescription', function(){
+        storeObject.diagnose = $('input[name=diagnosis]:checked').text();
         $.mobile.changePage("#third");
     });
 });
@@ -16,8 +17,8 @@ $(document).on("pageshow", "#second", function(){
    
     $("#second #patient-name").text(storeObject.patient);
     for (i=0;i<storeObject.diagnosis.length; i++){
-            $("fieldset").append("<input type='radio' name='radio-choice' value="+i
-            +"/><label for='radio-choice-2'>"+storeObject.diagnosis[i][1]+"</label>"    );
+            $("fieldset").append("<input type='radio' name='diagnosis' value="+i
+            +"/>"+storeObject.diagnosis[i][1]+"<br>"    );
     }
 });
 
