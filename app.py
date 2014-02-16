@@ -91,7 +91,9 @@ def get_diagnosis():
 def get_prescription():
     db = get_db()
     name = request.form['name']
-    diagnosis = request.form['diagnosis']
+#bug in frontend, it returns diagnosis followed by a '/'
+    diagnosis = request.form['diagnosis'][:-1]
+
     db.execute("insert into pat2dia values (?, ?);", (name, diagnosis))
     cur = db.execute("select name from prescription;")
     result = cur.fetchall()
