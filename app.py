@@ -90,6 +90,7 @@ def get_diagnosis():
 @crossdomain(origin='*')
 def get_prescription():
     db = get_db()
+    print request.form
     name = request.form['name']
 #bug in frontend, it returns diagnosis followed by a '/'
     diagnosis = request.form['diagnosis'][:-1]

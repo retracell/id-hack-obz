@@ -31,7 +31,7 @@
             <script>
                 $('#nameSymp')
                     .ajaxForm({
-                        url : 'http://127.0.0.1:5000/symptoms', // or whatever
+                        url : 'http://127.0.0.1:5000/symptoms', 
                         dataType : 'json',
                         success : function (response) {
                             storeObject.patient = response.patient;
@@ -48,14 +48,28 @@
             </div>
 
             <div data-role="content">
-                <form id ="diagnosis" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/diagnosis">
+                <form id ="diagnosisForm" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/diagnose">
                     <fieldset data-role="controlgroup">
-                    <legend style="font-weight:bold;"> Select the diagnosis for <text id="patient-name"></text>: </legend>
+                    <label for="name">Diagnosis for</label>
+                    <input type=text" name="name" id="patient-name" required="true">
                     </fieldset>
-                    <input type="submit" id="change-page-prescription" value="Submit"/>
+                    <input type="submit" id="change-page-diagnose" value="Submit"/>
                 </form>
             </div>
         </div>
+
+        <script>
+                $('#diagnosisForm')
+                    .ajaxForm({
+                        url : 'http://127.0.0.1:5000/diagnose', 
+                        dataType : 'json',
+                        success : function (response) {
+                            storeObject.recommended = response.recommended;
+                            storeObject.prescriptions = response.result;
+                     }
+                });
+            </script>
+
 
         <div data-role="page" id="third" data-theme="b">
             <div data-role="header" data-theme="b">
