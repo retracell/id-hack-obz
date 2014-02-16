@@ -25,9 +25,9 @@ $(document).on("pageshow", "#second", function(){
 $(document).on("pageshow", "#third", function(){
     $("#third #patient-name").text(storeObject.patient);
     $("#third #diagnosis-name").text(storeObject.diagnose);
-    for (i=0;i<storeObject.diagnosis.length; i++){
-            $("fieldset").append("<input type='radio' name='radio-choice' value="+i
-            +"/><label for='radio-choice-2'>"+storeObject.diagnosis[i][1]+"</label>");
+    for (i=0;i<storeObject.prescription.length; i++){
+            $("fieldset").append("<input type='checkboxes' name='prescription' value="+i
+            +"/><label for='radio-choice-2'>"+storeObject.prescription[i][1]+"</label>");
     }
 });
 
