@@ -53,7 +53,7 @@ INSERT INTO diagnosis(name) VALUES('Skin Infection');
 INSERT INTO diagnosis(name) VALUES('UTI');
 
 INSERT INTO prescription(name) VALUES('Analgesics');
-INSERT INTO prescription(name) VALUES('Aetaminophen');
+INSERT INTO prescription(name) VALUES('Acetaminophen');
 INSERT INTO prescription(name) VALUES('Albendazole');
 INSERT INTO prescription(name) VALUES('Albuterol');
 INSERT INTO prescription(name) VALUES('Aluminum Hydroxide');

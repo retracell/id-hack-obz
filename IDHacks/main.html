@@ -49,7 +49,7 @@
 
             <div data-role="content">
                 <form id ="diagnosisForm" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/diagnose">
-                    <fieldset data-role="controlgroup">
+                    <fieldset data-role="controlgroup" id="fs1">
                     <label for="name">Diagnosis for</label>
                     <input type=text" name="name" id="patient-name" required="true">
                     </fieldset>
@@ -78,20 +78,20 @@
             </div>
 
             <div data-role="content">
-                <form id ="prescription" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/verify">
-                    <fieldset data-role="controlgroup">
+                <form id ="prescriptionForm" method="GET" data-ajax="false" action="http://127.0.0.1:5000/verify">
+                    <fieldset data-role="controlgroup" id="fs2">
                     <label for="name">Diagnosis for</label>
                     <input type=text" name="name" id="patient-name" required="true">
                     <label for="name">with</label>
-                    <input type=text" name="name" id="diagnosis-name" required="true">
+                    <input type=text" name="diagnosis" id="diagnosis-name" required="true">
                     </fieldset>
                     <input type="submit" id="change-page-prescription" value="Submit"/>
                 </form>
             </div>
             <script>
-            $('#diagnosisForm')
+            $('#prescriptionForm')
                 .ajaxForm({
-                    url : 'http://127.0.0.1:5000/diagnose', 
+                    url : 'http://127.0.0.1:5000/verify', 
                     dataType : 'json',
                     success : function (response) {
                         if(response.result=='ok') {

@@ -14,19 +14,17 @@ $(document).on('pagebeforeshow', '#second', function(){
 });
 
 $(document).on("pageshow", "#second", function(){
-   
     $("#second #patient-name").val(storeObject.patient);
     for (i=0;i<storeObject.diagnosis.length; i++){
-            $("fieldset").append("<input type='radio' name='diagnosis' value="+storeObject.diagnosis[i][1]+"/><label for='radio-choice-2'>"+storeObject.diagnosis[i][1]+"</label><br/>"    );
+            $("#fs1").append("<input type='radio' name='diagnosis' value="+storeObject.diagnosis[i][1]+"/><label for='radio-choice-2'>"+storeObject.diagnosis[i][1]+"</label><br/>"    );
     }
 });
 
 $(document).on("pageshow", "#third", function(){
     $("#third #patient-name").val(storeObject.patient);
-    $("#third #diagnosis-name").text(storeObject.diagnose);
+    $("#third #diagnosis-name").val(storeObject.diagnose.slice(0,-1));
     for (i=0;i<storeObject.prescriptions.length; i++){
-            $("fieldset").append("<input type='checkbox' name='prescription' value="+i
-            +"/><label for='radio-choice-2'>"+storeObject.prescriptions[i][0]+"</label><br/>");
+            $("#fs2").append("<input type='checkbox' name='prescription' value="+storeObject.prescriptions[i][0]+"/><label for='radio-choice-2'>"+storeObject.prescriptions[i][0]+"</label><br/>");
     }
 });
 

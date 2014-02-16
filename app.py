@@ -90,7 +90,6 @@ def get_diagnosis():
 @crossdomain(origin='*')
 def get_prescription():
     db = get_db()
-    print request.form
     name = request.form['name']
 #bug in frontend, it returns diagnosis followed by a '/'
     diagnosis = request.form['diagnosis'][:-1]
@@ -106,18 +105,20 @@ def get_prescription():
     
     return jsonify({'result':result, 'recommended':recommended})
 
-@app.route('/verify', methods = ['POST'])
+@app.route('/verify', methods = ['GET'])
 @crossdomain(origin='*')
 def verify():
-    diagnosis = request.form['diagnosis']
-    prescription = request.form['prescription']
+    diagnosis = request.args.get('diagnosis')
+#bug in frontend, it returns prescription followed by a '/'
+    prescription = request.args.get('prescription')[:-1]
+    print prescription
     db = get_db()
     cur = db.execute(
         "select * from dia2pre where diagnosis_name=? and prescription_name=?;",
         (diagnosis, prescription))
     
     result = cur.fetchall()
-    if result is not None:
+    if len(result) > 0:
         with open('result.json', 'w') as f:
             json.dump({'result': 'ok'}, f) 
         return jsonify( {'result': 'ok'} )
