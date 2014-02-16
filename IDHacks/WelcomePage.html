@@ -10,27 +10,22 @@
 	<div data-role = "page" id="home">
 	<div data-role = "header">
 		<h1> Welcome!</h1>
-		<a href="Diagnosis.html"> Here</a>
 	</div>
 	<div data-role = "content">
-		<form id ="nameSymp" method = "POST" data-ajax="false" action="localhost:5000/getDiagnosis">
-			<div data-role="fieldcontain">
+		<form id ="nameSymp" method = "GET" data-ajax="false" action="localhost:5000/diagnosis">
+
 			<label for="fname">First Name</label> 
-			<input type="text" name="fname" id="fname" required="true">
-			</div>
-			
-			<div data-role="fieldcontain">
+			<input type="text" name="fname" id="fname" required="true"/>
+
 			<label for="lname">Last Name </label>
-			<input type="text" name="lname" id="lname" required="true">
-			</div>
+			<input type="text" name="lname" id="lname" required="true"/>
+
 			<br/>
 			
-			<div data-role="fieldcontain">
 			<label for="symptoms">Symptoms</label>
-			<input type="text" name="symptoms" id="symptoms" required="true">
-			</div>
+			<input type="text" name="symptoms" id="symptoms" required="true"/>
 			
-			<input type="submit" value="Submit">
+			<input type="submit" value="Submit"/>
 		</form>
 	</div>
 	</div>
