@@ -1,5 +1,6 @@
 *.py[cod]
 orbz
+*.swp
 
 # C extensions
 *.so
