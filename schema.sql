@@ -15,11 +15,30 @@ CREATE TABLE patient(
         name TEXT
 );
 
+CREATE TABLE symptom(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT
+);
+
 CREATE TABLE dia2pre(
         diagnosis_name TEXT,
         prescription_name TEXT,
         FOREIGN KEY(diagnosis_name) REFERENCES diagnosis(name),
         FOREIGN KEY(prescription_name) REFERENCES prescription(name)
+);
+
+CREATE TABLE pat2symp(
+        patient_name TEXT,
+        symptom_name TEXT,
+        FOREIGN KEY(patient_name) REFERENCES patient(name),
+        FOREIGN KEY(symptom_name) REFERENCES symptom(name)
+);
+
+CREATE TABLE pat2dia(
+        patient_name TEXT,
+        diagnosis_name TEXT,
+        FOREIGN KEY(patient_name) REFERENCES patient(name),
+        FOREIGN KEY(diagnosis_name) REFERENCES diagnosis(name)
 );
 
 INSERT INTO diagnosis(name) VALUES('Allergies');
@@ -59,6 +78,10 @@ INSERT INTO dia2pre VALUES('Flu', 'Acetaminophen');
 INSERT INTO dia2pre VALUES('Skin Infection', 'Neomycin');
 INSERT INTO dia2pre VALUES('Skin Infection', 'Clotrimazole');
 INSERT INTO dia2pre VALUES('Parasitic Infection', 'Aluminum Hydroxide');
+
+--Test patients
+INSERT INTO patient(name) VALUES('Bob');
+INSERT INTO patient(name) VALUES('Alice');
 
 COMMIT;
 
