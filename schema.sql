@@ -27,7 +27,7 @@ CREATE TABLE dia2pre(
         FOREIGN KEY(prescription_name) REFERENCES prescription(name)
 );
 
-CREATE TABLE pat2symp(
+CREATE TABLE pat2sym(
         patient_name TEXT,
         symptom_name TEXT,
         FOREIGN KEY(patient_name) REFERENCES patient(name),

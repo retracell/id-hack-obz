@@ -69,10 +69,12 @@ def index():
 def get_diagnosis():
     db = get_db()
     name = request.form['name']
-#may have many symptoms need to iterate
-    symptom = request.form['symptom']
-    db.execute("insert into pat2sym values (name, symptom);")
-    cur = db.execute("select name from diagnosis;")
+    symptoms = request.form['symptoms'].strip().split(',')
+    for symptom in symptoms:
+        test = db.execute("insert into pat2sym values (?, ?);", (name, symptom))
+    #select name doesn't work.. will use select * for now
+    cur = db.execute("select * from diagnosis;")
+    db.commit()
     result = cur.fetchall()
     return jsonify(result)
 
