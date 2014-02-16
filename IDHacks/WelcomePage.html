@@ -7,19 +7,17 @@
 		<script src="util.js"></script>
 	</head>
 	<body>
-	<div data-role = "page" id="home">
-	<div data-role = "header">
+	<div data-role = "page" id="home" data-theme="b">
+	<div data-role = "header" data-theme="b">
 		<h1> Welcome!</h1>
 	</div>
 	<div data-role = "content">
 		<form id ="nameSymp" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/symptoms">
-
-			<label for="name">Name</label> 
+			<label for="name">Patient Name</label> 
 			<input type="text" name="name" id="name" required="true"/>
-
-			<br/>
 			
 			<label for="symptoms">Symptoms</label>
+			<text style="font-size:10px"> Please enter symptoms seperated by commas.</text>
 			<input type="text" name="symptoms" id="symptoms" required="true"/>
 			
 			<input type="submit" value="Submit"/>
