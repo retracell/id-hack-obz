@@ -21,13 +21,12 @@ $(document).on("pageshow", "#second", function(){
     }
 });
 
-$(document).on("pageinit", "#third", function(){
-    location.reload();
+$(document).on("pageshow", "#third", function(){
     $("#third #patient-name").val(storeObject.patient);
     $("#third #diagnosis-name").text(storeObject.diagnose);
     for (i=0;i<storeObject.prescriptions.length; i++){
-            $("fieldset").append("<input type='checkboxes' name='prescription' value="+i
-            +"/><label for='radio-choice-2'>"+storeObject.prescriptions[i][1]+"</label>");
+            $("fieldset").append("<input type='checkbox' name='prescription' value="+i
+            +"/><label for='radio-choice-2'>"+storeObject.prescriptions[i][0]+"</label><br/>");
     }
 });
 
