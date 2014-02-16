@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+		<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+		<script src="http://malsup.github.com/jquery.form.js"></script> 
+		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		<script src="main.js"></script>
+	</head>
+	<body>
+        <div data-role="page" id="index">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    <h1> Welcome!</h1>
+                </h3>
+            </div>
+
+            <div data-role="content">
+                <div data-role = "content">
+                        <form id ="nameSymp" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/symptoms">
+                                <label for="name">Patient Name</label> 
+                                <input type="text" name="name" id="name" required="true"/>
+                                
+                                <label for="symptoms">Symptoms</label>
+                                <text style="font-size:10px"> Please enter symptoms seperated by commas.</text>
+                                <input type="text" name="symptoms" id="symptoms" required="true"/>
+                                
+                                <input type="submit" id="change-page-button" value="Submit"/>
+                        </form>
+                </div>
+
+            </div>
+            <script>
+                $('#nameSymp')
+                    .ajaxForm({
+                        url : 'http://127.0.0.1:5000/symptoms', // or whatever
+                        dataType : 'json',
+                        success : function (response) {
+                            storeObject.patient = response.patient;
+                            storeObject.diagnosis = response.result;
+                     }
+                });
+            </script>
+            <div data-theme="a" data-role="footer" data-position="fixed">
+
+            </div>
+        </div> 
+
+	<div data-role="page" id="second">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    <h1> Diagnosis </h1>
+                </h3>
+                <a href="#index" class="ui-btn-left">Back</a>
+            </div>
+
+            <div data-role="content">
+                <form id ="diagnosis" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/diagnosis">
+                    <fieldset data-role="controlgroup">
+                    <legend style="font-weight:bold;"> Select the diagnosis for <text id="name"></text>: </legend>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div data-theme="a" data-role="footer" data-position="fixed">
+
+            </div>
+        </div>
+
+        <div data-role="page" id="third">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    <h1> Diagnosis </h1>
+                </h3>
+                <a href="#index" class="ui-btn-left">Back</a>
+            </div>
+
+            <div data-role="content">
+                <form id ="diagnosis" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/diagnosis">
+                    <fieldset data-role="controlgroup">
+                    <legend style="font-weight:bold;"> Select the diagnosis for <text id="name"></text>: </legend>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div data-theme="a" data-role="footer" data-position="fixed">
+
+            </div>
+        </div>
+
+	</body>
+</html>
