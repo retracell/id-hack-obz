@@ -1,6 +1,7 @@
 *.py[cod]
 obz
 *.swp
+*.db
 
 # C extensions
 *.so

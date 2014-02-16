@@ -1,4 +1,4 @@
-#!orbz/bin/python
+#!obz/bin/python
 from flask import Flask, g
 import sqlite3
 
