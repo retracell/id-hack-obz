@@ -6,7 +6,7 @@ $(document).on('pagebeforeshow', '#index', function(){
 
 });
 
-$(document).on('pagebeforeshow', '#index', function(){
+$(document).on('pagebeforeshow', '#second', function(){
     $(document).on('click', '#change-page-diagnose', function(){
         storeObject.diagnose = $('input[name=diagnosis]:checked').val();
         $.mobile.changePage("#third");
@@ -23,7 +23,7 @@ $(document).on("pageshow", "#second", function(){
 
 $(document).on("pageinit", "#third", function(){
     location.reload();
-    $("#third #patient-name").text(storeObject.patient);
+    $("#third #patient-name").val(storeObject.patient);
     $("#third #diagnosis-name").text(storeObject.diagnose);
     for (i=0;i<storeObject.prescriptions.length; i++){
             $("fieldset").append("<input type='checkboxes' name='prescription' value="+i

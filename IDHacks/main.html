@@ -59,16 +59,16 @@
         </div>
 
         <script>
-                $('#diagnosisForm')
-                    .ajaxForm({
-                        url : 'http://127.0.0.1:5000/diagnose', 
-                        dataType : 'json',
-                        success : function (response) {
-                            storeObject.recommended = response.recommended;
-                            storeObject.prescriptions = response.result;
-                     }
-                });
-            </script>
+            $('#diagnosisForm')
+                .ajaxForm({
+                    url : 'http://127.0.0.1:5000/diagnose', 
+                    dataType : 'json',
+                    success : function (response) {
+                        storeObject.recommended = response.recommended;
+                        storeObject.prescriptions = response.result;
+                 }
+            });
+        </script>
 
 
         <div data-role="page" id="third" data-theme="b">
@@ -80,10 +80,27 @@
             <div data-role="content">
                 <form id ="prescription" method = "POST" data-ajax="false" action="http://127.0.0.1:5000/verify">
                     <fieldset data-role="controlgroup">
-                    <legend style="font-weight:bold;"> Select the prescription for <text id="patient-name"></text>'s diagnosis of <text id="diagnosis-name"></text></legend>
+                    <label for="name">Diagnosis for</label>
+                    <input type=text" name="name" id="patient-name" required="true">
+                    <label for="name">with</label>
+                    <input type=text" name="name" id="diagnosis-name" required="true">
                     </fieldset>
+                    <input type="submit" id="change-page-prescription" value="Submit"/>
                 </form>
             </div>
+            <script>
+            $('#diagnosisForm')
+                .ajaxForm({
+                    url : 'http://127.0.0.1:5000/diagnose', 
+                    dataType : 'json',
+                    success : function (response) {
+                        if(response.result=='ok') {
+                            alert("Great prescription!");
+                        else {
+                            alert("Alert: " + response.alert);
+                 }
+            });
+            </script>
         </div>
 
 	</body>
