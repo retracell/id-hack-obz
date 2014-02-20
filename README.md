@@ -6,7 +6,7 @@ Setup
 Run these commands:  
 virtualenv obz  
 pip install -r requirements.txt  
-execute app.py  
+./app.py (may have to chmod to execute)  
 sqlite3 test.db < schema.sql
 
 Test
