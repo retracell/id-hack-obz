@@ -1,5 +1,6 @@
-id-hack-obz
+Diagnosis TA
 ============
+Created at International Development Hackathon 2014. Mobile friendly web application that trains third world physician on giving correct diagnosis and prescriptions.
 
 Setup
 -----
